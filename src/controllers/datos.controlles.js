@@ -29,10 +29,9 @@ export const getDatos = async (req, res) => {
     const [rows] = await Coonexion.execute("SELECT * FROM usuarios");
     const id = 1
     const token = await CreateAccessToken({id: id})
-    //res.cookie('token', token);
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7)
-    res.cookie('token', token, {expires: expirationDate, priority:"high"});
+    res.cookie('token', token, {expires: expirationDate,sameSite: 'None',secure: true});
     res.status(200).json(rows)
   } catch (error) {
     console.log(error)
