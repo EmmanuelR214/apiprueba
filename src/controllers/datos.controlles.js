@@ -29,8 +29,8 @@ export const getDatos = async (req, res) => {
     const [rows] = await Coonexion.execute("SELECT * FROM usuarios");
     const id = 1
     const token = await CreateAccessToken({id: id})
-    res.cookie('token', token);
-        //res.cookie('token', token, {maxAge: 24 * 60 * 60 * 1000, priority:"high",  sameSite: 'None', domain: 'labarbada.store'});
+    //res.cookie('token', token);
+    res.cookie('token', token, {maxAge: 24 * 60 * 60 * 1000, priority:"high",  sameSite: 'None', domain: 'labarbada.store'});
     res.status(200).json(rows)
   } catch (error) {
     console.log(error)
