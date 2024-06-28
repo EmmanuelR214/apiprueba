@@ -5,20 +5,21 @@ import datosRoute from './routes/datos.routes.js';
 
 const app = express();
 
-// app.use(cors({
+app.use(cors({
 //   origin: 'http://localhost:5173', 
-// origin: 'https://labarbada.store',
-//   credentials: true 
-// }));
-
-const corsOptions = {
   origin: 'https://labarbada.store',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-};
+  credentials: true 
+}));
 
-app.use(cors(corsOptions));
+//const corsOptions = {
+//  origin: 'https://labarbada.store',
+//  methods: ['GET', //'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//  allowedHeaders: ['C//ontent-Type', 'Authorization'],
+//  credentials: tr//ue
+//
+//};
+
+//app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
