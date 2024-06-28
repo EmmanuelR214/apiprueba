@@ -30,7 +30,9 @@ export const getDatos = async (req, res) => {
     const id = 1
     const token = await CreateAccessToken({id: id})
     //res.cookie('token', token);
-    res.cookie('token', token, {maxAge: 24 * 60 * 60 * 1000, priority:"high",  sameSite: 'None', domain: 'labarbada.store'});
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 7)
+    res.cookie('token', token, {expires: expirationDate, priority:"high"});
     res.status(200).json(rows)
   } catch (error) {
     console.log(error)
