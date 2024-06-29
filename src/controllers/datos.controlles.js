@@ -31,7 +31,7 @@ export const getDatos = async (req, res) => {
     const token = await CreateAccessToken({id: id})
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7)
-    res.cookie('token', token, {expires: expirationDate,sameSite: 'None',secure: true, domain: 'labarbada.store'});
+    res.cookie('token', token, {expires: expirationDate,sameSite: 'None',secure: true, domain: 'labarbada.store', httpOnly: true});
     res.status(200).json(rows)
   } catch (error) {
     console.log(error)
